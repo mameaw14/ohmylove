@@ -15,8 +15,11 @@ import com.badlogic.gdx.graphics.GL20;
  */
 public class GameScreen extends ScreenAdapter{
     OhmyloveGame ohmyloveGame;
+    World world;
     public GameScreen(OhmyloveGame ohmylovegame) {
 	this.ohmyloveGame = ohmyloveGame;
+	world = new World(ohmyloveGame);
+	
     }
     
     @Override
