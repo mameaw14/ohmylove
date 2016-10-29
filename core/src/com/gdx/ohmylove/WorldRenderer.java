@@ -13,11 +13,21 @@ import com.badlogic.gdx.math.Vector2;
  *
  * @author nimo
  */
-public class Me {
+public class WorldRenderer{
     public SpriteBatch batch;
-    Me(){
+    private OhmyloveGame ohmyloveGame;
+    private World world;
+    private Texture meImg;
+    
+    WorldRenderer(OhmyloveGame ohmyloveGame, World world){
+	this.ohmyloveGame = ohmyloveGame;
+	this.world = world;
+	batch = ohmyloveGame.batch;
+	meImg = new Texture("me.png");
     }
     public void render(float delta){
-	
+        batch.begin();
+        batch.draw(meImg, 30, 30);
+        batch.end();
     }
 }

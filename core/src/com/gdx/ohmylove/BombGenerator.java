@@ -10,5 +10,7 @@ package com.gdx.ohmylove;
  * @author nimo
  */
 public class BombGenerator {
-    
+    BombGenerator(int n){
+	
+    }
 }

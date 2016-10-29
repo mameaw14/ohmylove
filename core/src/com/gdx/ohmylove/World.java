@@ -13,9 +13,9 @@ public class World {
     private Me me;
     private Lover lover;
     private BombGenerator bombgenerator;
-    private OhmyloveGame ohmylovegame;
-    World(OhmyloveGame ohmylovegame){
-	this.ohmylovegame = ohmylovegame;
+    private OhmyloveGame ohmyloveGame;
+    World(OhmyloveGame ohmyloveGame){
+	this.ohmyloveGame = ohmyloveGame;
 	bombgenerator = new BombGenerator(1);
 	me = new Me();
 	lover = new Lover();

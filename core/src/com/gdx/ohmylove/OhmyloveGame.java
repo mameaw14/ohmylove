@@ -9,11 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class OhmyloveGame extends Game {
 	public SpriteBatch batch;
-	Texture img;
-	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
+	        batch = new SpriteBatch();
 		setScreen(new GameScreen(this));
 	}
 
