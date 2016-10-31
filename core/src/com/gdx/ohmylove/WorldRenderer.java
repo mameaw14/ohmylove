@@ -18,16 +18,20 @@ public class WorldRenderer{
     private OhmyloveGame ohmyloveGame;
     private World world;
     private Texture meImg;
+    private Me me;
     
     WorldRenderer(OhmyloveGame ohmyloveGame, World world){
 	this.ohmyloveGame = ohmyloveGame;
 	this.world = world;
+	me = world.getMe();
 	batch = ohmyloveGame.batch;
 	meImg = new Texture("me.png");
     }
     public void render(float delta){
+	me.update();
         batch.begin();
-        batch.draw(meImg, 30, 30);
+	Vector2 mePosition = me.getPosition();
+        batch.draw(meImg, (int)mePosition.x, (int)mePosition.y);
         batch.end();
     }
 }
