@@ -14,16 +14,19 @@ import com.badlogic.gdx.math.Vector2;
 public class World {
     private Me me;
     private Lover lover;
-    private BombGenerator bombgenerator;
+    private BombGenerator bombGenerator;
     private OhmyloveGame ohmyloveGame;
     final private Vector2 meStartPoint = new Vector2(10,10);
     World(OhmyloveGame ohmyloveGame){
 	this.ohmyloveGame = ohmyloveGame;
-	bombgenerator = new BombGenerator(1);
+	bombGenerator = new BombGenerator(1,ohmyloveGame.batch);
 	me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
 	lover = new Lover();
     }
     public Me getMe(){
 	return me;
+    }
+    public BombGenerator getBombGenerator(){
+	return bombGenerator;
     }
 }

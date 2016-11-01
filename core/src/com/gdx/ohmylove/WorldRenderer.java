@@ -20,6 +20,7 @@ public class WorldRenderer{
     private World world;
     private Texture meImg;
     private Me me;
+    private BombGenerator bombGenerator;
     private Sprite meSprite;
     
     WorldRenderer(OhmyloveGame ohmyloveGame, World world){
@@ -27,13 +28,15 @@ public class WorldRenderer{
 	this.world = world;
 	me = world.getMe();
 	batch = ohmyloveGame.batch;
+	bombGenerator = world.getBombGenerator();
+	
 	meImg = new Texture("me.png");
 	meSprite = new Sprite(meImg);
 	meSprite.setOriginCenter();
-	
     }
     public void render(float delta){
 	me.update();
+	bombGenerator.render(delta);
         batch.begin();
 	Vector2 mePosition = me.getPosition();
 	meSprite.setPosition(mePosition.x, mePosition.y);
