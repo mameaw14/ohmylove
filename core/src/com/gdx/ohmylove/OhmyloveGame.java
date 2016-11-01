@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class OhmyloveGame extends Game {
 	public SpriteBatch batch;
+	final static public int HEIGHT = 620;
+	final static public int WIDTH = 800;
 	@Override
 	public void create () {
 	        batch = new SpriteBatch();

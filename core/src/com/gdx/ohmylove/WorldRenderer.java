@@ -6,6 +6,7 @@
 package com.gdx.ohmylove;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -19,6 +20,7 @@ public class WorldRenderer{
     private World world;
     private Texture meImg;
     private Me me;
+    private Sprite meSprite;
     
     WorldRenderer(OhmyloveGame ohmyloveGame, World world){
 	this.ohmyloveGame = ohmyloveGame;
@@ -26,12 +28,18 @@ public class WorldRenderer{
 	me = world.getMe();
 	batch = ohmyloveGame.batch;
 	meImg = new Texture("me.png");
+	meSprite = new Sprite(meImg);
+	meSprite.setOriginCenter();
+	
     }
     public void render(float delta){
 	me.update();
         batch.begin();
 	Vector2 mePosition = me.getPosition();
-        batch.draw(meImg, (int)mePosition.x, (int)mePosition.y);
+	meSprite.setPosition(mePosition.x, mePosition.y);
+        meSprite.draw(batch);
+	float angle = me.getAngle();
+	meSprite.setRotation(angle);
         batch.end();
     }
 }
