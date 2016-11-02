@@ -19,7 +19,7 @@ public class World {
     final private Vector2 meStartPoint = new Vector2(10,10);
     World(OhmyloveGame ohmyloveGame){
 	this.ohmyloveGame = ohmyloveGame;
-	bombGenerator = new BombGenerator(1,ohmyloveGame.batch);
+	bombGenerator = new BombGenerator(6);
 	me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
 	lover = new Lover();
     }

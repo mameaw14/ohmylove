@@ -8,27 +8,32 @@ package com.gdx.ohmylove;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
  *
  * @author nimo
  */
-public class BombGenerator {
+public class Bomb {
+    private Sprite bombSprite;
+    private Texture bombImg;
     public SpriteBatch batch;
-    ArrayList<Bomb> bombList = new ArrayList<Bomb>();
-    BombGenerator(int n){
+    Random rand = new Random();
+    
+    Bomb(){
 	this.batch = OhmyloveGame.batch;
-	for(int i=0;i<n;i++){
-	    bombList.add(new Bomb());
-	}
+	bombImg = new Texture("bomb.png");
+	bombSprite = new Sprite(bombImg);
+	bombSprite.setOriginCenter();
+	
+	int y = rand.nextInt(OhmyloveGame.HEIGHT+1); 
+	int x = rand.nextInt(OhmyloveGame.WIDTH+1); 
+	bombSprite.setPosition(x, y);
     }
     
     public void render(float delta){
-	for(Bomb bomb : bombList){
-	    bomb.render(delta);
-	}
+	batch.begin();
+        bombSprite.draw(batch);
+        batch.end();
     }
-    
 }
