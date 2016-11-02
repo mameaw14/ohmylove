@@ -35,7 +35,7 @@ public class WorldRenderer{
 	meSprite.setOriginCenter();
     }
     public void render(float delta){
-	me.update();
+	me.render(delta);
 	bombGenerator.render(delta);
         batch.begin();
 	Vector2 mePosition = me.getPosition();
