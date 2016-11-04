@@ -10,17 +10,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Random;
 
-/**
- *
- * @author nimo
- */
 public class Bomb {
     private Sprite bombSprite;
     private Texture bombImg;
     public SpriteBatch batch;
     Random rand = new Random();
     
-    Bomb(){
+    Bomb() {
 	this.batch = OhmyloveGame.batch;
 	bombImg = new Texture("bomb.png");
 	bombSprite = new Sprite(bombImg);
@@ -31,7 +27,7 @@ public class Bomb {
 	bombSprite.setPosition(x, y);
     }
     
-    public void render(float delta){
+    public void render(float delta) {
 	batch.begin();
         bombSprite.draw(batch);
         batch.end();
