@@ -17,15 +17,18 @@ public class World {
     private BombGenerator bombGenerator;
     private OhmyloveGame ohmyloveGame;
     final private Vector2 meStartPoint = new Vector2(10,10);
+    
     World(OhmyloveGame ohmyloveGame){
 	this.ohmyloveGame = ohmyloveGame;
-	bombGenerator = new BombGenerator(6);
+	bombGenerator = new BombGenerator(10);
 	me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
 	lover = new Lover();
     }
+    
     public Me getMe(){
 	return me;
     }
+    
     public BombGenerator getBombGenerator(){
 	return bombGenerator;
     }

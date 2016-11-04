@@ -20,6 +20,7 @@ public class Bullet {
     public SpriteBatch batch;
     private Vector2 vector;
     final float SPEED = 10f;
+    
     Bullet(Vector2 mePos, float angle){
 	vector = new Vector2();
 	vector.set((float)Math.cos(angle * Math.PI / 180),(float)Math.sin(angle * Math.PI / 180));
