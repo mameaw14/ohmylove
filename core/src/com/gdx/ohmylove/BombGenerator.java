@@ -4,19 +4,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class BombGenerator {
-    public SpriteBatch batch;
-    ArrayList<Bomb> bombList = new ArrayList<Bomb>();
+  public SpriteBatch batch;
+  ArrayList<Bomb> bombList = new ArrayList<Bomb>();
     
-    BombGenerator(int n) {
-	this.batch = OhmyloveGame.batch;
-	for (int i = 0; i < n; i++) {
-	    bombList.add(new Bomb());
-	}
+  BombGenerator(int n) {
+    this.batch = OhmyloveGame.batch;
+    for (int i = 0; i < n; i++) {
+      bombList.add(new Bomb());
     }
+  }
     
-    public void render(float delta) {
-	for (Bomb bomb : bombList) {
-	    bomb.render(delta);
-	}
+  public void render(float delta) {
+    for (Bomb bomb : bombList) {
+      bomb.render(delta);
     }
+  }
 }
