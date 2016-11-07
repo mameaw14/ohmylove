@@ -32,11 +32,11 @@ public class Me {
     
     Me(int x,int y) {
 	this.batch = OhmyloveGame.batch;
-	position = new Vector2(x,y);
         
 	meImg = new Texture("me.png");
 	meSprite = new Sprite(meImg);
 	meSprite.setOriginCenter();
+	position = new Vector2(x,y);
         
 	bulletList = new ArrayList<Bullet>();
     }
@@ -79,24 +79,26 @@ public class Me {
 	Vector2 mePosition = getPosition();
         
 	meSprite.setPosition(mePosition.x, mePosition.y);
-        meSprite.draw(batch);
 	meSprite.setRotation(angle);
+        meSprite.draw(batch);
     }
     
     private void shoot() {
-	bulletList.add(new Bullet(position,angle));
+        Vector2 centerPos = getCenterPosition();
+	bulletList.add(new Bullet(centerPos,angle) );
     }
     
     private void updateAngle() {
-	Vector2 cursorPosition = new Vector2(Gdx.input.getX(),OhmyloveGame.HEIGHT-Gdx.input.getY());
-	Vector2 centerPos = new Vector2(position.x+40,position.y+40);
-	//cursorPosition.x -= centerPos.x;
-	//cursorPosition.y -= centerPos.y;
-	Vector2 center = new Vector2(1,0);
+	Vector2 cursorPosition = new Vector2(Gdx.input.getX(), OhmyloveGame.HEIGHT - Gdx.input.getY() );
+	Vector2 centerPos = getCenterPosition();
 	angle = -90 + (float) ( (float) Math.atan2(cursorPosition.x - centerPos.x, -(cursorPosition.y - centerPos.y) ) * (180 / Math.PI) );
     }
     
     public float getAngle(){
 	return angle;
+    }
+    
+    private Vector2 getCenterPosition(){
+      return new Vector2(position.x + meSprite.getOriginX(),position.y + meSprite.getOriginY() );
     }
 }
