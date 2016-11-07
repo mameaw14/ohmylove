@@ -3,13 +3,19 @@ package com.gdx.ohmylove;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 
 public class Me {
+    public SpriteBatch batch;
     private Vector2 position;
     private float angle;
     private ArrayList<Bullet> bulletList;
+    private Texture meImg;
+    private Sprite meSprite;
     public static final int DIRECTION_UP = 3;
     public static final int DIRECTION_RIGHT = 2;
     public static final int DIRECTION_DOWN = 1;
@@ -25,7 +31,13 @@ public class Me {
     };
     
     Me(int x,int y) {
+	this.batch = OhmyloveGame.batch;
 	position = new Vector2(x,y);
+        
+	meImg = new Texture("me.png");
+	meSprite = new Sprite(meImg);
+	meSprite.setOriginCenter();
+        
 	bulletList = new ArrayList<Bullet>();
     }
     
@@ -63,6 +75,12 @@ public class Me {
 	for (Bullet bullet : bulletList) {
 	    bullet.render(1);
 	}
+        
+	Vector2 mePosition = getPosition();
+        
+	meSprite.setPosition(mePosition.x, mePosition.y);
+        meSprite.draw(batch);
+	meSprite.setRotation(angle);
     }
     
     private void shoot() {

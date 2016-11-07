@@ -28,8 +28,6 @@ public class Bomb {
     }
     
     public void render(float delta) {
-	batch.begin();
         bombSprite.draw(batch);
-        batch.end();
     }
 }

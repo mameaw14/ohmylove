@@ -25,8 +25,6 @@ public class Bullet {
     
     public void render(float delta) {
 	bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
-	batch.begin();
 	bulletSprite.draw(batch);
-	batch.end();
     }
 }
