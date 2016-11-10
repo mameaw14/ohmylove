@@ -10,13 +10,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import static java.lang.Math.ceil;
 import java.util.Random;
 
 public class Bomb extends Circle{
   private Sprite bombSprite;
   private Texture bombImg;
   public SpriteBatch batch;
-  private float SPEED = 1F;
+  private float SPEED = 5F;
   private Vector2 vector;
   Random rand = new Random();
   
@@ -30,19 +31,31 @@ public class Bomb extends Circle{
     bombSprite = new Sprite(bombImg);
     bombSprite.setOriginCenter();
     
-    y = rand.nextInt(OhmyloveGame.HEIGHT+1);
-    x = rand.nextInt(OhmyloveGame.WIDTH+1);
+    y = rand.nextInt(OhmyloveGame.HEIGHT - (int)bombSprite.getHeight() -1);
+    x = rand.nextInt(OhmyloveGame.WIDTH - (int)bombSprite.getWidth() -1);
     bombSprite.setPosition(x, y);
+    System.out.println("x = " + x + "y = " + y);
   }
   
   private void initVector(){
-    int angle = rand.nextInt(361);
     vector = new Vector2();
-    vector.set((float)Math.cos(angle * Math.PI / 180), (float)Math.sin(angle * Math.PI / 180));
+    vector.setToRandomDirection();
   }
   
   public void render(float delta) {
     bombSprite.translate(vector.x * SPEED, vector.y * SPEED);
     bombSprite.draw(batch);
+  }
+  
+  public Vector2 getPosition(){
+    return new Vector2(bombSprite.getX() + bombSprite.getOriginX(), bombSprite.getY() + bombSprite.getOriginY());
+  }
+  
+  public float getAngle(){
+    return vector.angle();
+  }
+  
+  public void setAngle(float angle) {
+    vector.setAngle(angle);
   }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Me {
   public SpriteBatch batch;
   private Vector2 position;
-  private float angle;
+  private Vector2 vector;
   private ArrayList<Bullet> bulletList;
   private Texture meImg;
   private Sprite meSprite;
@@ -37,7 +37,8 @@ public class Me {
     meSprite = new Sprite(meImg);
     meSprite.setOriginCenter();
     position = new Vector2(x,y);
-       
+    vector = new Vector2(1,0);
+    
     bulletList = new ArrayList<Bullet>();
   }
     
@@ -70,34 +71,38 @@ public class Me {
     if (Gdx.input.isKeyPressed(Keys.SPACE) || Gdx.input.justTouched()) {
       shoot();
     }
+    
     for (Bullet bullet : bulletList) { 
-      if(World.isOutOfWorld(bullet.getPosition()) ) {
-        bullet = null;
+      if (World.isOutOfWorld(bullet.getPosition(), bullet.radius) ) {
+        bullet.setAngle(bullet.getAngle() + 90F);
+        bullet.render(delta);
       } else {
-        bullet.render(1);
+        bullet.render(delta);
       }
     }
 
     Vector2 mePosition = getPosition();
       
     meSprite.setPosition(mePosition.x, mePosition.y);
-    meSprite.setRotation(angle);
+    meSprite.setRotation(vector.angle() );
     meSprite.draw(batch);
   }
   
   private void shoot() {
     Vector2 centerPos = getCenterPosition();
-    bulletList.add(new Bullet(centerPos,angle) );
+    bulletList.add(new Bullet(centerPos,vector.angle() ) );
   }
   
   private void updateAngle() {
     Vector2 cursorPosition = new Vector2(Gdx.input.getX(), OhmyloveGame.HEIGHT - Gdx.input.getY() );
     Vector2 centerPos = getCenterPosition();
-    angle = -90 + (float) ( (float) Math.atan2(cursorPosition.x - centerPos.x, -(cursorPosition.y - centerPos.y) ) * (180 / Math.PI) );
+    vector.set(cursorPosition.x - centerPos.x, cursorPosition.y - centerPos.y);
+    vector.nor();
+    //angle = -90 + (float) ( (float) Math.atan2(cursorPosition.x - centerPos.x, -(cursorPosition.y - centerPos.y) ) * (180 / Math.PI) );
   }
     
   public float getAngle(){
-    return angle;
+    return vector.angle();
   }
     
   private Vector2 getCenterPosition(){

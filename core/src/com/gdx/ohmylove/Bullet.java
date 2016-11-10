@@ -16,15 +16,16 @@ public class Bullet extends Circle{
   Bullet(Vector2 mePos, float angle) {
     super(mePos, 5f);
     this.batch = OhmyloveGame.batch;
+    vector = new Vector2(1,0);
+    vector.setAngle(angle);
+    vector.nor();
     
-    vector = new Vector2();
-    vector.set((float)Math.cos(angle * Math.PI / 180), (float)Math.sin(angle * Math.PI / 180));
     bulletImg = new Texture("bullet.png");
     bulletSprite = new Sprite(bulletImg);
     bulletSprite.setOriginCenter();
     bulletSprite.scale(2.0f);
        
-    setPosition(mePos.x - bulletSprite.getOriginX(), mePos.y - bulletSprite.getOriginY());
+    setPosition(mePos.x - bulletSprite.getOriginX(), mePos.y - bulletSprite.getOriginY() );
        
     bulletSprite.setPosition(x,y);
     bulletSprite.setRotation(angle);
@@ -36,6 +37,14 @@ public class Bullet extends Circle{
   }
   
   public Vector2 getPosition() {
-    return new Vector2(x,y);
+    return new Vector2(bulletSprite.getX() + bulletSprite.getOriginX(), bulletSprite.getY() + bulletSprite.getOriginY() );
+  }
+  
+  public float getAngle() {
+    return vector.angle();
+  }
+  
+  public void setAngle(float angle) {
+    vector.setAngle(angle);
   }
 }

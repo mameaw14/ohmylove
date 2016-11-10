@@ -1,5 +1,6 @@
 package com.gdx.ohmylove;
 
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
 public class World {
@@ -24,23 +25,23 @@ public class World {
     return bombGenerator;
   }
   
-  public static boolean isOutOfWorld(Vector2 pos){
-    if (pos.x < 0) {
+  public static boolean isOutOfWorld(Vector2 pos, float radius){
+    if (pos.x - 0 < radius) {
       return true;
     }
-    if (pos.x > OhmyloveGame.WIDTH) {
+    if (pos.x - OhmyloveGame.WIDTH > -radius) {
       return true;
     }
-    if (pos.y < 0) {
+    if (pos.y - 0 < radius) {
       return true;
     }
-    if (pos.y > OhmyloveGame.HEIGHT) {
+    if (pos.y - OhmyloveGame.HEIGHT > -radius) {
       return true;
     }
     return false;
   }
   
-  public static boolean isOutOfWorld(float x, float y){
-    return isOutOfWorld(new Vector2(x,y));
+  public static boolean isOutOfWorld(float x, float y, float radius){
+    return isOutOfWorld(new Vector2(x,y), radius);
   }
 }
