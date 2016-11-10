@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import java.util.ArrayList;
 
 public class Bullet extends Circle{
   private Sprite bulletSprite;
@@ -32,6 +33,10 @@ public class Bullet extends Circle{
   }
   
   public void render(float delta) {
+    if (World.isOutOfWorld(getPosition(), radius) ) {
+        setAngle(vector.angle() + 90F);
+    }
+    checkIsTouch();
     bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
     bulletSprite.draw(batch);
   }
@@ -46,5 +51,14 @@ public class Bullet extends Circle{
   
   public void setAngle(float angle) {
     vector.setAngle(angle);
+  }
+  
+  private void checkIsTouch() {
+    ArrayList<Bomb> bombList = World.getBombGenerator().getList();
+    for (Bomb bomb : bombList) {
+      if (getPosition().dst(bomb.getPosition() ) <= radius + bomb.radius){
+        bomb.touchBullet();
+      }
+    }
   }
 }

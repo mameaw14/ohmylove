@@ -73,12 +73,7 @@ public class Me {
     }
     
     for (Bullet bullet : bulletList) { 
-      if (World.isOutOfWorld(bullet.getPosition(), bullet.radius) ) {
-        bullet.setAngle(bullet.getAngle() + 90F);
-        bullet.render(delta);
-      } else {
-        bullet.render(delta);
-      }
+      bullet.render(delta);
     }
 
     Vector2 mePosition = getPosition();

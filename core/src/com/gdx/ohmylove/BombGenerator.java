@@ -15,16 +15,19 @@ public class BombGenerator {
   }
     
   public void render(float delta) {
-    
     for (Bomb bomb : bombList) {
-      if (World.isOutOfWorld(bomb.getPosition(), bomb.radius) ) {
-        bomb.setAngle(bomb.getAngle() + 180F);
-        bomb.render(delta);
-        
-        //System.out.println("out");
-      } else {
-        bomb.render(delta);
+      if (!bomb.isDestroyed() ) {
+        if (World.isOutOfWorld(bomb.getPosition(), bomb.radius) ) {
+          bomb.setAngle(bomb.getAngle() + 180F);
+          bomb.render(delta);
+        } else {
+          bomb.render(delta);
+        }
       }
     }
+  }
+  
+  public ArrayList<Bomb> getList(){
+    return bombList;
   }
 }

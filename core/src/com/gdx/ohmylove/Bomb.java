@@ -19,6 +19,7 @@ public class Bomb extends Circle{
   public SpriteBatch batch;
   private float SPEED = 5F;
   private Vector2 vector;
+  private boolean isDestroyed = false;
   Random rand = new Random();
   
   Bomb() {
@@ -57,5 +58,13 @@ public class Bomb extends Circle{
   
   public void setAngle(float angle) {
     vector.setAngle(angle);
+  }
+  
+  public void touchBullet(){
+    isDestroyed = true;
+  }
+  
+  public boolean isDestroyed(){
+    return isDestroyed;
   }
 }
