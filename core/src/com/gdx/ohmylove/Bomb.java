@@ -17,7 +17,7 @@ public class Bomb extends Circle{
   private Sprite bombSprite;
   private Texture bombImg;
   public SpriteBatch batch;
-  private float SPEED = 5F;
+  private float SPEED = 2F;
   private Vector2 vector;
   private boolean isDestroyed = false;
   Random rand = new Random();
@@ -44,6 +44,7 @@ public class Bomb extends Circle{
   }
   
   public void render(float delta) {
+    //if(isDestroyed) return;
     bombSprite.translate(vector.x * SPEED, vector.y * SPEED);
     bombSprite.draw(batch);
   }
@@ -62,6 +63,7 @@ public class Bomb extends Circle{
   
   public void touchBullet(){
     isDestroyed = true;
+    bombSprite.setPosition(-200,-200);
   }
   
   public boolean isDestroyed(){

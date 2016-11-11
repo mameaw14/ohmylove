@@ -73,7 +73,9 @@ public class Me {
     }
     
     for (Bullet bullet : bulletList) { 
-      bullet.render(delta);
+      if  (!bullet.isDestroyed() ) {
+        bullet.render(delta);
+      }
     }
 
     Vector2 mePosition = getPosition();

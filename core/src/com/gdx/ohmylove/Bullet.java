@@ -12,6 +12,8 @@ public class Bullet extends Circle{
   private Texture bulletImg;
   public SpriteBatch batch;
   private Vector2 vector;
+  private boolean isBounce = false;
+  private boolean isDestroyed = false;
   final float SPEED = 10F;
   
   Bullet(Vector2 mePos, float angle) {
@@ -34,7 +36,7 @@ public class Bullet extends Circle{
   
   public void render(float delta) {
     if (World.isOutOfWorld(getPosition(), radius) ) {
-        setAngle(vector.angle() + 90F);
+        return;
     }
     checkIsTouch();
     bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
@@ -56,9 +58,19 @@ public class Bullet extends Circle{
   private void checkIsTouch() {
     ArrayList<Bomb> bombList = World.getBombGenerator().getList();
     for (Bomb bomb : bombList) {
-      if (getPosition().dst(bomb.getPosition() ) <= radius + bomb.radius){
-        bomb.touchBullet();
+      if (getPosition().dst(bomb.getPosition() ) <= radius + bomb.radius) {
+        if (!isBounce) {
+          setAngle(vector.angle() + 120F);
+          isBounce = true;
+        } else {
+          bomb.touchBullet();
+          isDestroyed = true;
+        }
       }
     }
+  }
+  
+  public boolean isDestroyed(){
+    return isDestroyed;
   }
 }
