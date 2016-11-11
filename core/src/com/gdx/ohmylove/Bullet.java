@@ -9,6 +9,7 @@ public class Bullet extends Ball{
   Bullet(Vector2 mePos, float angle) {
     super(mePos, angle, "bullet.png");
     SPEED = 10F;
+    sprite.scale(2F);
   }
   
   @Override
@@ -26,7 +27,12 @@ public class Bullet extends Ball{
     for (Bomb bomb : bombList) {
       if (getPosition().dst(bomb.getPosition() ) <= radius + bomb.radius) {
         if (!isBounce) {
-          setAngle(vector.angle() + 120F);
+          Vector2 bulletPos = getPosition();
+          Vector2 bombPos = bomb.getPosition();
+          float btw = new Vector2(bombPos.x - bulletPos.x, bombPos.y - bulletPos.y).angle();
+          System.out.println(btw + " " + vector.angle());
+          setAngle(-vector.angle() + 2*btw + 180F);
+          System.out.println(vector.angle());
           isBounce = true;
         } else {
           bomb.touchBullet();

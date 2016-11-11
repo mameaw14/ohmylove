@@ -11,8 +11,8 @@ public class Bomb extends Ball{
     SPEED = 2F;
     initVector();
     
-    sprite.setPosition(rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1),
-        rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1) );
+    sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
+        rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1) );
   }
   
   private void initVector(){
