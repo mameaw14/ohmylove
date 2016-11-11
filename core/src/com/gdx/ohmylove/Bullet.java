@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Bullet extends Ball{
   private boolean isBounce = false;
-  final float SPEED = 10F;
   
   Bullet(Vector2 mePos, float angle) {
     super(mePos, angle, "bullet.png");
+    SPEED = 10F;
   }
   
   @Override
