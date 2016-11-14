@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Lover extends Ball {
   private final int LIVE = 9;
+  private int remainLive = 9;
   Random rand = new Random();
   
   Lover() {
@@ -26,9 +27,15 @@ public class Lover extends Ball {
     if (World.isOutOfWorld(this) ) {
       setAngle(getAngle() + 90F);
       super.render(delta);
-    }
-    else {
+    } else {
       super.render(delta);
+    }
+  }
+  
+  public void touchBullet() {
+    remainLive--;
+    if (remainLive == 0) {
+      isDestroyed = true;
     }
   }
 }

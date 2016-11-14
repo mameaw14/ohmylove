@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class World {
   private Me me;
-  private Lover lover;
+  private static Lover lover;
   private static BombGenerator bombGenerator;
   private OhmyloveGame ohmyloveGame;
   final private Vector2 meStartPoint = new Vector2(10,10);
@@ -20,7 +20,7 @@ public class World {
     return me;
   }
   
-  public Lover getLover() {
+  public static Lover getLover() {
     return lover;
   }
 

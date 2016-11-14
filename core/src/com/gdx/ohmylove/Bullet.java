@@ -23,6 +23,11 @@ public class Bullet extends Ball{
   }
    
   private void checkIsTouch() {
+    checkTouchBomb();
+    checkTouchLover();
+  }
+  
+  private void checkTouchBomb() {
     ArrayList<Bomb> bombList = World.getBombGenerator().getList();
     for (Bomb bomb : bombList) {
       if (getPosition().dst(bomb.getPosition() ) <= radius + bomb.radius) {
@@ -38,6 +43,22 @@ public class Bullet extends Ball{
           bomb.touchBullet();
           isDestroyed = true;
         }
+      }
+    }
+  }
+  
+  private void checkTouchLover() {
+    Lover lover = World.getLover();
+    if (getPosition().dst(lover.getPosition() ) <= radius + lover.radius) {
+      if (!isBounce) {
+        Vector2 bulletPos = getPosition();
+        Vector2 loverPos = lover.getPosition();
+        float btw = new Vector2(loverPos.x - bulletPos.x, loverPos.y - bulletPos.y).angle();
+        setAngle(-vector.angle() + 2*btw + 180F);
+        isBounce = true;
+      } else {
+        lover.touchBullet();
+        isDestroyed = true;
       }
     }
   }
