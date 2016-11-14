@@ -11,10 +11,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Bomb extends Ball{  
-  Timer timer;
-  Random rand = new Random();
-  BitmapFont font;
-  String text;
+  private Timer timer;
+  private Random rand = new Random();
+  private BitmapFont font;
+  private String text;
   int countdown = 30;
   
   Bomb() {

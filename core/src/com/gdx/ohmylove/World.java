@@ -7,6 +7,7 @@ public class World {
   private static Lover lover;
   private static BombGenerator bombGenerator;
   private OhmyloveGame ohmyloveGame;
+  private static StatusBar statusBar;
   final private Vector2 meStartPoint = new Vector2(10,10);
   
   World(OhmyloveGame ohmyloveGame) {
@@ -14,6 +15,7 @@ public class World {
     bombGenerator = new BombGenerator(3);
     me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
     lover = new Lover();
+    statusBar = new StatusBar();
   }
 
   public Me getMe() {
@@ -22,6 +24,10 @@ public class World {
   
   public static Lover getLover() {
     return lover;
+  }
+  
+  public static StatusBar getStatusBar() {
+    return statusBar;
   }
 
   public static BombGenerator getBombGenerator() {

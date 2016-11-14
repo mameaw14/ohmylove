@@ -9,6 +9,7 @@ public class WorldRenderer {
   private Me me;
   private Lover lover;
   private BombGenerator bombGenerator;
+  private StatusBar statusBar;
    
   WorldRenderer(OhmyloveGame ohmyloveGame, World world) {
     this.ohmyloveGame = ohmyloveGame;
@@ -17,6 +18,7 @@ public class WorldRenderer {
     batch = ohmyloveGame.batch;
     bombGenerator = world.getBombGenerator();
     lover = world.getLover();
+    statusBar = world.getStatusBar();
   }
     
   public void render(float delta) {
@@ -24,6 +26,7 @@ public class WorldRenderer {
     me.render(delta);
     bombGenerator.render(delta);
     lover.render(delta);
+    statusBar.render(delta);
     batch.end();
   }
 }

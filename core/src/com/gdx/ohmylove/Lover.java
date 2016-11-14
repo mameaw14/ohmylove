@@ -1,16 +1,21 @@
 package com.gdx.ohmylove;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import java.util.Random;
 
 public class Lover extends Ball {
   private final int LIVE = 9;
-  private int remainLive = 9;
+  private int remainLive;
   Random rand = new Random();
   
   Lover() {
     super("lover.png");
     SPEED = 1F;
+    remainLive = LIVE;
     initVector();
     
     sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
@@ -26,10 +31,9 @@ public class Lover extends Ball {
   public void render(float delta) {
     if (World.isOutOfWorld(this) ) {
       setAngle(getAngle() + 90F);
-      super.render(delta);
-    } else {
-      super.render(delta);
     }
+    
+    super.render(delta);
   }
   
   public void touchBullet() {
@@ -37,5 +41,9 @@ public class Lover extends Ball {
     if (remainLive == 0) {
       isDestroyed = true;
     }
+  }
+  
+  public int getLive() {
+    return remainLive;
   }
 }
