@@ -95,7 +95,6 @@ public class Me {
     Vector2 centerPos = getCenterPosition();
     vector.set(cursorPosition.x - centerPos.x, cursorPosition.y - centerPos.y);
     vector.nor();
-    //angle = -90 + (float) ( (float) Math.atan2(cursorPosition.x - centerPos.x, -(cursorPosition.y - centerPos.y) ) * (180 / Math.PI) );
   }
     
   public float getAngle(){

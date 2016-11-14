@@ -11,7 +11,7 @@ public class World {
   
   World(OhmyloveGame ohmyloveGame) {
     this.ohmyloveGame = ohmyloveGame;
-    bombGenerator = new BombGenerator(10);
+    bombGenerator = new BombGenerator(3);
     me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
     lover = new Lover();
   }

@@ -10,12 +10,12 @@ public class Lover extends Ball {
   
   Lover() {
     super("lover.png");
-    SPEED = 5F;
+    SPEED = 1F;
     initVector();
     
     sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
         rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1) );
-    }
+  }
     
   private void initVector() {
     vector = new Vector2();

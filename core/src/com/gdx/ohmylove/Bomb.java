@@ -1,27 +1,67 @@
 package com.gdx.ohmylove;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import java.util.Random;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Bomb extends Ball{
+public class Bomb extends Ball{  
+  Timer timer;
   Random rand = new Random();
+  BitmapFont font;
+  String text;
+  int countdown = 30;
   
   Bomb() {
     super("bomb.png");
-    SPEED = 0F;
+    SPEED = 2F;
     initVector();
+    initLabel();
     
     sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
         rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1) );
+    
+    timer = new Timer();
+    timer.schedule(new SuicideTask(),0,1000);
   }
   
-  private void initVector(){
+  private void initVector() {
     vector = new Vector2();
     vector.setToRandomDirection();
   }
   
-  public void touchBullet(){
+  private void initLabel() {
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("typewcond_regular.otf"));
+    FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+    parameter.size = 24;
+    parameter.color = Color.WHITE;
+    parameter.borderWidth = 2;
+    parameter.borderColor = Color.BLACK;
+    font = generator.generateFont(parameter);
+    generator.dispose();
+  }
+  
+  public void touchBullet() {
     isDestroyed = true;
     sprite.setPosition(-200,-200);
+  }
+  
+  @Override
+  public void render(float delta) {
+    super.render(delta);
+    font.draw(batch, text, getPosition().x - 20, getPosition().y);
+  }
+  
+  private class SuicideTask extends TimerTask {
+
+    @Override
+    public void run(){
+      text = countdown-- + " s";
+    }
   }
 }
