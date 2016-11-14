@@ -17,7 +17,7 @@ public class BombGenerator {
   public void render(float delta) {
     for (Bomb bomb : bombList) {
       if (!bomb.isDestroyed() ) {
-        if (World.isOutOfWorld(bomb.getPosition(), bomb.radius) ) {
+        if (World.isOutOfWorld(bomb) ) {
           bomb.setAngle(bomb.getAngle() + 180F);
           bomb.render(delta);
         } else {

@@ -8,7 +8,7 @@ public class Bomb extends Ball{
   
   Bomb() {
     super("bomb.png");
-    SPEED = 2F;
+    SPEED = 0F;
     initVector();
     
     sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 

@@ -51,6 +51,10 @@ public class Ball {
     return vector.angle();
   }
   
+  public float getRadius() {
+    return radius;
+  }
+  
   protected void setAngle(float angle) {
     vector.setAngle(angle);
   }

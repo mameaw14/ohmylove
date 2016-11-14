@@ -1,17 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gdx.ohmylove;
 
-/**
- *
- * @author nimo
- */
-public class Lover {
-    private int heart;
-    Lover(){
-	heart = 9;
+import com.badlogic.gdx.math.Vector2;
+import java.util.Random;
+
+public class Lover extends Ball {
+  private final int LIVE = 9;
+  Random rand = new Random();
+  
+  Lover() {
+    super("lover.png");
+    SPEED = 5F;
+    initVector();
+    
+    sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
+        rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1) );
     }
+    
+  private void initVector() {
+    vector = new Vector2();
+    vector.setToRandomDirection();
+  }
+
+  @Override
+  public void render(float delta) {
+    if (World.isOutOfWorld(this) ) {
+      setAngle(getAngle() + 90F);
+      super.render(delta);
+    }
+    else {
+      super.render(delta);
+    }
+  }
 }

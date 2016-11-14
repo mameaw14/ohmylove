@@ -14,8 +14,8 @@ public class Bullet extends Ball{
   
   @Override
   public void render(float delta) {
-    if (World.isOutOfWorld(getPosition(), radius) ) {
-        return;
+    if (World.isOutOfWorld(this) ) {
+      return;
     }
     checkIsTouch();
     sprite.translate(vector.x * SPEED, vector.y * SPEED);
