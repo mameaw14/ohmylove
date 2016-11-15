@@ -9,8 +9,11 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 public class StatusBar { 
   
   SpriteBatch batch = OhmyloveGame.batch;
-  private BitmapFont font;
-  private String text;
+  private BitmapFont liveFont;
+  
+  private BitmapFont heartFont;
+  private String liveText;
+  private String heartText;
   
   StatusBar() {
     initLabel();
@@ -18,23 +21,33 @@ public class StatusBar {
   
   public void render(float delta) {
     setText();
-    font.draw(batch, text, OhmyloveGame.WIDTH - 160, OhmyloveGame.HEIGHT - 20);
+    liveFont.draw(batch, liveText, OhmyloveGame.WIDTH - 270, OhmyloveGame.HEIGHT - 30);
+    heartFont.draw(batch, heartText, OhmyloveGame.WIDTH - 220, OhmyloveGame.HEIGHT - 20);
+    
   }
   
   private void setText() {
-    text = "live: ";
+    liveText = "Live: ";
+    heartText = "";
     int live = World.getLover().getLive();
     
-    for (int i = 0; i < live; i++) {
-      text += "*";
+    for (int i = 0; i < 9; i++) {
+      if (i < live) {
+        heartText += "B ";
+      } else {
+        heartText += "A ";
+      }
     }
   }
   private void initLabel() {
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("typewcond_regular.otf"));
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ChronoType.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-    parameter.size = 18;
+    parameter.size = 24;
     parameter.color = Color.RED;
-    font = generator.generateFont(parameter);
+    liveFont = generator.generateFont(parameter);
+    
+    generator = new FreeTypeFontGenerator(Gdx.files.internal("webdings.ttf"));
+    heartFont = generator.generateFont(parameter);
     generator.dispose();
   }
 }

@@ -8,8 +8,8 @@ public class Bullet extends Ball{
   
   Bullet(Vector2 mePos, float angle) {
     super(mePos, angle, "bullet.png");
-    SPEED = 10F;
-    sprite.scale(2F);
+    SPEED = 15F;
+    sprite.setScale(1.4F);
   }
   
   @Override
@@ -18,6 +18,7 @@ public class Bullet extends Ball{
       return;
     }
     checkIsTouch();
+    sprite.setRotation(vector.angle());
     sprite.translate(vector.x * SPEED, vector.y * SPEED);
     sprite.draw(batch);
   }

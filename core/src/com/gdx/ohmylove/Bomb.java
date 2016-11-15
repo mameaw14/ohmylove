@@ -36,12 +36,10 @@ public class Bomb extends Ball{
   }
   
   private void initLabel() {
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("typewcond_regular.otf"));
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ChronoType.ttf"));
     FreeTypeFontParameter parameter = new FreeTypeFontParameter();
-    parameter.size = 24;
+    parameter.size = 30;
     parameter.color = Color.WHITE;
-    parameter.borderWidth = 2;
-    parameter.borderColor = Color.BLACK;
     font = generator.generateFont(parameter);
     generator.dispose();
   }
@@ -61,7 +59,7 @@ public class Bomb extends Ball{
 
     @Override
     public void run(){
-      text = countdown-- + " s";
+      text = countdown-- + "s";
     }
   }
 }
