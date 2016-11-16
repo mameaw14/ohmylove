@@ -9,15 +9,24 @@ public class World {
   private OhmyloveGame ohmyloveGame;
   private static StatusBar statusBar;
   final private Vector2 meStartPoint = new Vector2(10,10);
+  public static int numBomb = 3;
+  private static int level = 3;
   
   World(OhmyloveGame ohmyloveGame) {
     this.ohmyloveGame = ohmyloveGame;
-    bombGenerator = new BombGenerator(3);
+    bombGenerator = new BombGenerator(level);
     me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
     lover = new Lover();
     statusBar = new StatusBar();
   }
 
+  public void update() {
+    if(numBomb == 0) {
+      bombGenerator = null;
+      bombGenerator = new BombGenerator(++level);
+      numBomb = level;
+    }
+  }
   public Me getMe() {
     return me;
   }

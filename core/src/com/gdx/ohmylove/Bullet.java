@@ -36,9 +36,7 @@ public class Bullet extends Ball{
           Vector2 bulletPos = getPosition();
           Vector2 bombPos = bomb.getPosition();
           float btw = new Vector2(bombPos.x - bulletPos.x, bombPos.y - bulletPos.y).angle();
-          System.out.println(btw + " " + vector.angle());
           setAngle(-vector.angle() + 2*btw + 180F);
-          System.out.println(vector.angle());
           isBounce = true;
         } else {
           bomb.touchBullet();

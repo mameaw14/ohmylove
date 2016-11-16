@@ -5,17 +5,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/Lover.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/Bullet.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/OhmyloveGame.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/GameScreen.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/World.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/Ball.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/StatusBar.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/Bomb.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/Me.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/WorldRenderer.java</file>
-        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/core/src/com/gdx/ohmylove/BombGenerator.java</file>
+        <file>file:/D:/Users/nimo/Documents/NetBeansProjects/ohmylove/desktop/src/com/gdx/ohmylove/desktop/DesktopLauncher.java</file>
       </group>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>

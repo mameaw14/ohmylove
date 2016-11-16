@@ -19,10 +19,8 @@ public class BombGenerator {
       if (!bomb.isDestroyed() ) {
         if (World.isOutOfWorld(bomb) ) {
           bomb.setAngle(bomb.getAngle() + 90F);
-          bomb.render(delta);
-        } else {
-          bomb.render(delta);
-        }
+        } 
+        bomb.render(delta);
       }
     }
   }

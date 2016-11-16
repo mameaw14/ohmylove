@@ -28,6 +28,7 @@ public class Bomb extends Ball{
     
     timer = new Timer();
     timer.schedule(new SuicideTask(),0,1000);
+    timer.schedule(new DieTask(),30000);
   }
   
   private void initVector() {
@@ -45,14 +46,30 @@ public class Bomb extends Ball{
   }
   
   public void touchBullet() {
+    die();
+  }
+  
+  private void die() {
+    timer.cancel();
     isDestroyed = true;
     sprite.setPosition(-200,-200);
+    World.numBomb--;
+    System.out.println(World.numBomb);
   }
   
   @Override
   public void render(float delta) {
     super.render(delta);
     font.draw(batch, text, getPosition().x - 20, getPosition().y);
+  }
+
+  private class DieTask extends TimerTask {
+
+    @Override
+    public void run(){
+      die();
+      World.getLover().loseLive();
+    }
   }
   
   private class SuicideTask extends TimerTask {

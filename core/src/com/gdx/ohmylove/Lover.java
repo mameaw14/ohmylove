@@ -37,6 +37,10 @@ public class Lover extends Ball {
   }
   
   public void touchBullet() {
+    loseLive();
+  }
+  
+  public void loseLive() {
     remainLive--;
     if (remainLive == 0) {
       isDestroyed = true;

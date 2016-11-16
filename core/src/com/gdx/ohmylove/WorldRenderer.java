@@ -22,9 +22,10 @@ public class WorldRenderer {
   }
     
   public void render(float delta) {
+    world.update();
     batch.begin();
     me.render(delta);
-    bombGenerator.render(delta);
+    world.getBombGenerator().render(delta);
     lover.render(delta);
     statusBar.render(delta);
     batch.end();
