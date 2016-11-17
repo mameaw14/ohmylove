@@ -15,7 +15,7 @@ public class Bomb extends Ball{
   private Random rand = new Random();
   private BitmapFont font;
   private String text;
-  int countdown = 30;
+  int countdown;
   
   Bomb() {
     super("bomb.png");
@@ -26,9 +26,10 @@ public class Bomb extends Ball{
     sprite.setPosition(rand.nextInt(OhmyloveGame.WIDTH - (int)sprite.getWidth() -1), 
         rand.nextInt(OhmyloveGame.HEIGHT - (int)sprite.getHeight() -1) );
     
+    countdown = (rand.nextInt(20) + 15 );
     timer = new Timer();
     timer.schedule(new SuicideTask(),0,1000);
-    timer.schedule(new DieTask(),30000);
+    timer.schedule(new DieTask(), countdown * 1000);
   }
   
   private void initVector() {

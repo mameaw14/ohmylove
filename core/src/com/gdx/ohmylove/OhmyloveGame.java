@@ -19,7 +19,7 @@ public class OhmyloveGame extends Game {
     setScreen(new GameOverScreen(this));
   }
   
-  public void restart() {
+  public void newGame() {
     create();
   }
   

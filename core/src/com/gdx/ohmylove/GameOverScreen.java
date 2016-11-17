@@ -22,18 +22,19 @@ public class GameOverScreen extends ScreenAdapter{
     initFont();
     
     int score = StatusBar.getScore();
-    text = " Score: " + score + "\nGame Over";
+    text = "Score: " + score + "\nGame Over";
   }
   
   @Override
   public void render(float delta) {
     
     if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-      ohmyloveGame.restart();
+      ohmyloveGame.newGame();
     }
     
     Gdx.gl.glClearColor(32F / 255F, 21F / 255F, 17F / 255F, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    
     batch.begin();
     font.draw(batch, text, OhmyloveGame.WIDTH / 2F - 100F, OhmyloveGame.HEIGHT / 2F + 50F);
     restartFont.draw(batch, "press spacebar to restart", OhmyloveGame.WIDTH / 2F - 110F, OhmyloveGame.HEIGHT / 2F - 30F);
