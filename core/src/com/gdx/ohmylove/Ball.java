@@ -81,6 +81,7 @@ public class Ball {
 
     @Override
     public void run() {
+      System.out.println("immortal run");
       immortal = false;
     }
   }

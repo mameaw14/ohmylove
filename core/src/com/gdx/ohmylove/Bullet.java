@@ -1,15 +1,20 @@
 package com.gdx.ohmylove;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 
 public class Bullet extends Ball{
   private boolean isBounce = false;
+  Sound sound = Gdx.audio.newSound(Gdx.files.internal("sound/shoot.wav"));
   
   Bullet(Vector2 mePos, float angle) {
     super(mePos, angle, "bullet.png");
     SPEED = 15F;
     sprite.setScale(1.4F);
+    
+    sound.play();
   }
   
   @Override

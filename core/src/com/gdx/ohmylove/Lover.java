@@ -1,6 +1,7 @@
 package com.gdx.ohmylove;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -13,6 +14,7 @@ public class Lover extends Ball {
   private final int LIVE = 9;
   private int remainLive;
   Random rand = new Random();
+  Sound meow = Gdx.audio.newSound(Gdx.files.internal("sound/meow.mp3"));
   
   Lover() {
     super("lover.png");
@@ -45,6 +47,7 @@ public class Lover extends Ball {
     if (remainLive == 0) {
       isDestroyed = true;
     }
+    meow.play();
   }
   
   public int getLive() {

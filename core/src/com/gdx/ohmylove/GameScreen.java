@@ -2,6 +2,7 @@ package com.gdx.ohmylove;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 
 public class GameScreen extends ScreenAdapter{
@@ -9,10 +10,17 @@ public class GameScreen extends ScreenAdapter{
   World world;
   WorldRenderer worldRenderer;
   
+  Music music = Gdx.audio.newMusic(Gdx.files.internal("sound/bg.mp3"));
+  
   public GameScreen(OhmyloveGame ohmyloveGame) {
     this.ohmyloveGame = ohmyloveGame;
     world = new World(ohmyloveGame);
     worldRenderer = new WorldRenderer(ohmyloveGame,world);
+    
+    
+    music.setLooping(true);
+    music.setVolume(0.8F);
+    music.play();
   }
   
   @Override
