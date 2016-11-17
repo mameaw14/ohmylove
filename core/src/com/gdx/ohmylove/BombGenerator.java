@@ -13,13 +13,11 @@ public class BombGenerator {
       bombList.add(new Bomb());
     }
   }
-    
+  
   public void render(float delta) {
     for (Bomb bomb : bombList) {
       if (!bomb.isDestroyed() ) {
-        if (World.isOutOfWorld(bomb) ) {
-          bomb.setAngle(bomb.getAngle() + 90F);
-        } 
+        World.isOutOfWorld(bomb);
         bomb.render(delta);
       }
     }

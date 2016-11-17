@@ -38,10 +38,13 @@ public class Bullet extends Ball{
           float btw = new Vector2(bombPos.x - bulletPos.x, bombPos.y - bulletPos.y).angle();
           setAngle(-vector.angle() + 2*btw + 180F);
           isBounce = true;
+          bomb.immortal();
         } else {
           bomb.touchBullet();
           isDestroyed = true;
         }
+      } else if(getPosition().dst(bomb.getPosition() ) < radius + bomb.radius - 2) {
+        isDestroyed = true;
       }
     }
   }
@@ -55,6 +58,7 @@ public class Bullet extends Ball{
         float btw = new Vector2(loverPos.x - bulletPos.x, loverPos.y - bulletPos.y).angle();
         setAngle(-vector.angle() + 2*btw + 180F);
         isBounce = true;
+        lover.immortal();
       } else {
         lover.touchBullet();
         isDestroyed = true;

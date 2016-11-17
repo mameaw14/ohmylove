@@ -14,21 +14,31 @@ public class StatusBar {
   private BitmapFont heartFont;
   private String liveText;
   private String heartText;
+  private String scoreText;
+  private int score;
   
   StatusBar() {
     initLabel();
+    score = 0;
   }
   
   public void render(float delta) {
     setText();
+    
+    liveFont.draw(batch, scoreText, 20, OhmyloveGame.HEIGHT - 30);
     liveFont.draw(batch, liveText, OhmyloveGame.WIDTH - 270, OhmyloveGame.HEIGHT - 30);
     heartFont.draw(batch, heartText, OhmyloveGame.WIDTH - 220, OhmyloveGame.HEIGHT - 20);
-    
+  }
+  
+  public void updateScore(int diff) {
+    score += diff;
   }
   
   private void setText() {
     liveText = "Live: ";
     heartText = "";
+    scoreText = "Score: ";
+    scoreText += score;
     int live = World.getLover().getLive();
     
     for (int i = 0; i < 9; i++) {
@@ -39,6 +49,7 @@ public class StatusBar {
       }
     }
   }
+  
   private void initLabel() {
     FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ChronoType.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();

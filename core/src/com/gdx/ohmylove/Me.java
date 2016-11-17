@@ -87,6 +87,8 @@ public class Me {
   
   private void shoot() {
     Vector2 centerPos = getCenterPosition();
+    centerPos.x += 15 * vector.x;
+    centerPos.y += 15 * vector.y;
     bulletList.add(new Bullet(centerPos,vector.angle() ) );
   }
   

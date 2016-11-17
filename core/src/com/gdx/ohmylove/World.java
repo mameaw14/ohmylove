@@ -27,6 +27,7 @@ public class World {
       numBomb = level;
     }
   }
+  
   public Me getMe() {
     return me;
   }
@@ -43,19 +44,27 @@ public class World {
     return bombGenerator;
   }
   
+  public static void setScore(int diff) {
+    statusBar.updateScore(diff);
+  }
+  
   public static boolean isOutOfWorld(Ball ball){
     Vector2 pos = ball.getPosition();
     float radius = ball.radius;
     if (pos.x - 0 < radius) {
+      ball.setAngle(-ball.getAngle()-180F);
       return true;
     }
     if (pos.x - OhmyloveGame.WIDTH > -radius) {
+      ball.setAngle(-ball.getAngle()-180F);
       return true;
     }
     if (pos.y - 0 < radius) {
+      ball.setAngle(360F-ball.getAngle());
       return true;
     }
-    if (pos.y - OhmyloveGame.HEIGHT > -radius) {
+    if (pos.y - OhmyloveGame.HEIGHT > -radius) {      
+      ball.setAngle(360F-ball.getAngle());
       return true;
     }
     return false;

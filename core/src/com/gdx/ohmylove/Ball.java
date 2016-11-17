@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -17,6 +19,8 @@ public class Ball {
   protected Vector2 vector;
   protected boolean isDestroyed = false;
   protected float SPEED;
+  protected boolean immortal = false;
+  Timer timer = new Timer();
   
   Ball(String imgStr){
     Img = new Texture(imgStr);
@@ -65,5 +69,19 @@ public class Ball {
   
   protected void setSpeed(float speed) {
     SPEED = speed;
+  }
+  
+  
+  public void immortal() {
+    timer.schedule(new immortalTask(),1000);
+    immortal = true;
+  }
+
+  protected class immortalTask extends TimerTask {
+
+    @Override
+    public void run() {
+      immortal = false;
+    }
   }
 }

@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Lover extends Ball {
   private final int LIVE = 9;
@@ -29,10 +31,7 @@ public class Lover extends Ball {
 
   @Override
   public void render(float delta) {
-    if (World.isOutOfWorld(this) ) {
-      setAngle(getAngle() + 90F);
-    }
-    
+    World.isOutOfWorld(this);
     super.render(delta);
   }
   
@@ -41,6 +40,7 @@ public class Lover extends Ball {
   }
   
   public void loseLive() {
+    if (immortal) return;
     remainLive--;
     if (remainLive == 0) {
       isDestroyed = true;

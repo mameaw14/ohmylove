@@ -50,11 +50,14 @@ public class Bomb extends Ball{
   }
   
   private void die() {
+    if (immortal) return;
     timer.cancel();
     isDestroyed = true;
-    sprite.setPosition(-200,-200);
+    sprite.setPosition(-200, -200);
     World.numBomb--;
     System.out.println(World.numBomb);
+    
+    World.setScore(countdown);
   }
   
   @Override
@@ -66,7 +69,7 @@ public class Bomb extends Ball{
   private class DieTask extends TimerTask {
 
     @Override
-    public void run(){
+    public void run() {
       die();
       World.getLover().loseLive();
     }
@@ -75,7 +78,7 @@ public class Bomb extends Ball{
   private class SuicideTask extends TimerTask {
 
     @Override
-    public void run(){
+    public void run() {
       text = countdown-- + "s";
     }
   }
