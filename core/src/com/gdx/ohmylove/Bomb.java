@@ -46,11 +46,11 @@ public class Bomb extends Ball{
   }
   
   public void touchBullet() {
+    if (immortal) return;
     die();
   }
   
   private void die() {
-    if (immortal) return;
     timer.cancel();
     isDestroyed = true;
     sprite.setPosition(-200, -200);

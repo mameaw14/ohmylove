@@ -23,6 +23,7 @@ public class WorldRenderer {
     
   public void render(float delta) {
     world.update();
+    
     batch.begin();
     me.render(delta);
     world.getBombGenerator().render(delta);

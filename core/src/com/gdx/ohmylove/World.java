@@ -6,14 +6,17 @@ public class World {
   private Me me;
   private static Lover lover;
   private static BombGenerator bombGenerator;
-  private OhmyloveGame ohmyloveGame;
+  private static OhmyloveGame ohmyloveGame;
   private static StatusBar statusBar;
   final private Vector2 meStartPoint = new Vector2(10,10);
-  public static int numBomb = 3;
-  private static int level = 3;
+  public static int numBomb;
+  private static int level;
   
   World(OhmyloveGame ohmyloveGame) {
     this.ohmyloveGame = ohmyloveGame;
+    numBomb = 3;
+    level = 3;
+    
     bombGenerator = new BombGenerator(level);
     me = new Me((int)meStartPoint.x,(int)meStartPoint.y);
     lover = new Lover();
@@ -26,6 +29,10 @@ public class World {
       bombGenerator = new BombGenerator(++level);
       numBomb = level;
     }
+  }
+  
+  public static void gameOver() {
+      ohmyloveGame.gameOver();
   }
   
   public Me getMe() {

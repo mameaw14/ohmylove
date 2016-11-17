@@ -15,7 +15,7 @@ public class StatusBar {
   private String liveText;
   private String heartText;
   private String scoreText;
-  private int score;
+  private static int score;
   
   StatusBar() {
     initLabel();
@@ -34,6 +34,10 @@ public class StatusBar {
     score += diff;
   }
   
+  public static int getScore() {
+    return score;
+  }
+  
   private void setText() {
     liveText = "Live: ";
     heartText = "";
@@ -47,6 +51,9 @@ public class StatusBar {
       } else {
         heartText += "A ";
       }
+    }
+    if (live == 0) {
+      World.gameOver();
     }
   }
   

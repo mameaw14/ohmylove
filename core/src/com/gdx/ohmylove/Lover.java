@@ -38,11 +38,11 @@ public class Lover extends Ball {
   }
   
   public void touchBullet() {
+    if (immortal) return;
     loseLive();
   }
   
   public void loseLive() {
-    if (immortal) return;
     remainLive--;
     if (remainLive == 0) {
       isDestroyed = true;

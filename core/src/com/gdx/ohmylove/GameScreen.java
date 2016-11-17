@@ -16,8 +16,7 @@ public class GameScreen extends ScreenAdapter{
     this.ohmyloveGame = ohmyloveGame;
     world = new World(ohmyloveGame);
     worldRenderer = new WorldRenderer(ohmyloveGame,world);
-    
-    
+   
     music.setLooping(true);
     music.setVolume(0.8F);
     music.play();
@@ -28,5 +27,10 @@ public class GameScreen extends ScreenAdapter{
     Gdx.gl.glClearColor(1F,0.7294F, 0.2863F, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     worldRenderer.render(delta);
+  }
+  
+  @Override
+  public void dispose() {
+    music.dispose();
   }
 }
