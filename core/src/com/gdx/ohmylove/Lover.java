@@ -43,6 +43,8 @@ public class Lover extends Ball {
   }
   
   public void loseLive() {
+    if (remainLive < 0) return;
+    
     remainLive--;
     if (remainLive == 0) {
       isDestroyed = true;
