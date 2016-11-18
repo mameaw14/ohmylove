@@ -2,9 +2,11 @@ package com.gdx.ohmylove;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import java.util.Random;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import java.util.Timer;
@@ -64,6 +66,10 @@ public class Bomb extends Ball{
   public void render(float delta) {
     super.render(delta);
     font.draw(batch, text, getPosition().x - 20, getPosition().y);
+    
+    if(countdown == 0) {
+      sprite.setTexture(new Texture("bomb-bomb.png"));
+    }
   }
 
   private class DieTask extends TimerTask {
@@ -79,7 +85,8 @@ public class Bomb extends Ball{
 
     @Override
     public void run() {
-      text = countdown-- + "s";
+      text = --countdown + "s";
+      if(countdown == 0) text = "";
     }
   }
 }
