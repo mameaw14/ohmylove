@@ -11,7 +11,7 @@ public class OhmyloveGame extends Game {
   @Override
   public void create() {
     batch = new SpriteBatch();
-    setScreen(new GameScreen(this));
+    setScreen(new HomeScreen(this));
   }
   
   public void gameOver() {
@@ -20,7 +20,7 @@ public class OhmyloveGame extends Game {
   }
   
   public void newGame() {
-    create();
+    setScreen(new GameScreen(this));
   }
   
   @Override

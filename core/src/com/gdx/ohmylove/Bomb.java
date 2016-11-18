@@ -56,7 +56,6 @@ public class Bomb extends Ball{
     isDestroyed = true;
     sprite.setPosition(-200, -200);
     World.numBomb--;
-    System.out.println(World.numBomb);
     
     World.setScore(countdown);
   }

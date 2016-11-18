@@ -14,7 +14,7 @@ import java.util.TimerTask;
 public class Ball {
   protected float radius;
   protected Sprite sprite;
-  private Texture Img;
+  private Texture img;
   protected SpriteBatch batch = OhmyloveGame.batch;;
   protected Vector2 vector;
   protected boolean isDestroyed = false;
@@ -23,8 +23,8 @@ public class Ball {
   Timer timer = new Timer();
   
   Ball(String imgStr){
-    Img = new Texture(imgStr);
-    sprite = new Sprite(Img);
+    img = new Texture(imgStr);
+    sprite = new Sprite(img);
     sprite.setOriginCenter();
     radius = sprite.getOriginX();
   }
@@ -34,8 +34,8 @@ public class Ball {
     vector.setAngle(angle);
     vector.nor();
     
-    Img = new Texture(imgStr);
-    sprite = new Sprite(Img);
+    img = new Texture(imgStr);
+    sprite = new Sprite(img);
     sprite.setOriginCenter();
     sprite.setPosition(mePos.x - sprite.getOriginX(), mePos.y - sprite.getOriginY());
     sprite.setRotation(angle);
@@ -81,7 +81,6 @@ public class Ball {
 
     @Override
     public void run() {
-      System.out.println("immortal run");
       immortal = false;
     }
   }

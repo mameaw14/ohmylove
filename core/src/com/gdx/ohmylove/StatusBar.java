@@ -61,7 +61,7 @@ public class StatusBar {
     FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ChronoType.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
     parameter.size = 24;
-    parameter.color = Color.RED;
+    parameter.color = Color.valueOf("ff3b3b");
     liveFont = generator.generateFont(parameter);
     
     generator = new FreeTypeFontGenerator(Gdx.files.internal("webdings.ttf"));
